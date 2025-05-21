@@ -4,9 +4,9 @@
 sudo yum install java-17-amazon-corretto -y
 
 # Download and extract Tomcat 9.0.99
-wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.99/bin/apache-tomcat-9.0.99.tar.gz
-tar -zxvf apache-tomcat-9.0.99.tar.gz
-mv apache-tomcat-9.0.99 tomcat
+wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.105/bin/apache-tomcat-9.0.105.tar.gz
+tar -zxvf apache-tomcat-9.0.105.tar.gz
+mv apache-tomcat-9.0.105 tomcat
 
 # Add Tomcat manager roles and user before the closing </tomcat-users> tag
 sed -i '/<\/tomcat-users>/ i\
