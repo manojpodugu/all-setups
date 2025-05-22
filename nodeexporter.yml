@@ -24,15 +24,15 @@
         Description=Node Exporter
         After=network.target
 
-       [Service]
-       User=node_exporter
-       Group=node_exporter
-       Type=simple
-       ExecStart=/usr/local/bin/node_exporter
+        [Service]
+        User=node_exporter
+        Group=node_exporter
+        Type=simple
+        ExecStart=/usr/local/bin/node_exporter
 
-       [Install]
-       WantedBy=multi-user.target
-       EOF
+        [Install]
+        WantedBy=multi-user.target
+        EOF
       become: yes
 
 
@@ -53,3 +53,14 @@
     - name: Show node_exporter status output
       debug:
         var: status.stdout_lines
+      
+      
+      
+   
+      
+      
+
+      
+       
+        
+        
