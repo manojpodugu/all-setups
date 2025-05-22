@@ -3,16 +3,16 @@
   become: yes
   tasks:
     - name: Download node_exporter tarball
-      command: wget https://github.com/prometheus/node_exporter/releases/download/v1.5.0/node_exporter-1.5.0.linux-amd64.tar.gz -O /tmp/node_exporter.tar.gz
+      command: wget https://github.com/prometheus/node_exporter/releases/download/v1.5.0/node_exporter-1.5.0.linux-amd64.tar.gz
 
     - name: Extract node_exporter tarball
-      command: tar -xf /tmp/node_exporter.tar.gz -C /tmp/
+      command: tar -xf node_exporter-1.5.0.linux-amd64.tar.gz
 
     - name: Move node_exporter binary to /usr/local/bin
-      command: mv /tmp/node_exporter-1.5.0.linux-amd64/node_exporter /usr/local/bin/node_exporter
+      command: mv node_exporter-1.5.0.linux-amd64/node_exporter  /usr/local/bin
 
     - name: Cleanup extracted files
-      command: rm -rv /tmp/node_exporter-1.5.0.linux-amd64*
+      command: rm -rv node_exporter-1.5.0.linux-amd64*
 
     - name: Create node_exporter user
       command: useradd -rs /bin/false node_exporter
