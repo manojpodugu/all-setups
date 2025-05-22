@@ -43,7 +43,7 @@
       command: systemctl enable node_exporter
 
     - name: Start node_exporter service
-      command: systemctl start node_exporter
+      command: systemctl start node_exporter.service
 
     - name: Check node_exporter status
       command: systemctl status node_exporter --no-pager
