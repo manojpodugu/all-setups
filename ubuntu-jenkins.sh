@@ -45,6 +45,9 @@ sudo systemctl start jenkins
 # Confirms whether Jenkins started successfully
 sudo systemctl status jenkins --no-pager
 
+# Displays Initial Password
+cat /var/lib/jenkins/secrets/initialAdminPassword
+
 #NOTE: 
 # 1) ENABLE JAVA VERSION (optional if you want to pick between versions)
      #sudo update-alternatives --config java
