@@ -1,4 +1,5 @@
 #!/bin/bash
+
 #NOTE:
 #1) argocd installation only works with "kubectl".
 #2) To use kubectl, we need created cluster first.
