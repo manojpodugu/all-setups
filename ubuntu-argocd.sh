@@ -15,7 +15,15 @@ kubectl apply --server-side \
      #1)For large CRDs such as applicationsets.argoproj.io, Kubernetes may reject them because the client-side apply mechanism stores a huge annotation "kubectl.kubernetes.io/last-applied-configuration". which exceeds the 256 KB limit.
      #2)We use server-side apply because it avoids storing the large "kubectl.kubernetes.io/last-applied-configuration" annotation, preventing large CRDs (like ApplicationSet) from failing with the Kubernetes annotation size limit.
 #------------ Installation done------------
-kubectl get all -n argocd # After installing the ArgoCD, to check what resources it has created.
+
+
+echo "=================================================================================================="
+echo "change ClusterIP to LoadBalancer from immediate below command"
+echo "==================================================================================================="
+echo "kubectl edit svc argocd-server -n argocd # entering into service file with "ClusterIP" type."
+echo "===================================================================================================="
+echo "===================================================================================================="
+echo "kubectl get all -n argocd   # After installing the ArgoCD, to check what resources it has created."
 echo "=========================================================================================================="
 echo "==========================================================================================================="
 echo "kubectl get nodes -o wide  #To get ip address of worker nodes. EXTERNAL-IP are Public IP addresses. \n
@@ -27,10 +35,6 @@ echo "secret value" | base64 --decode         # To decode the secret. Because, s
 echo "=========================================================================================================="
 echo "==========================================================================================================="
 
-echo "=================================================================================================="
-echo "change ClusterIP to LoadBalancer from below command"
-echo "==================================================================================================="
-echo"kubectl edit svc argocd-server -n argocd # entering into service file with "ClusterIP" type."
 
 
 #reference when file is opened. Find the below pattern and change "ClusterIP" to "NodePort" or "LoadBalancer"(recommended). After save and exit.
