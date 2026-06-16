@@ -16,7 +16,7 @@ echo "Downloading Nexus..."
 sudo wget https://download.sonatype.com/nexus/3/nexus-${NEXUS_VERSION}-linux-x86_64.tar.gz
 
 echo "Extracting Nexus..."
-sudo tar -xzf latest-unix.tar.gz
+sudo tar -xzf nexus-${NEXUS_VERSION}-linux-x86_64.tar.gz
 
 NEXUS_DIR=$(ls -d nexus-* | head -1)
 
