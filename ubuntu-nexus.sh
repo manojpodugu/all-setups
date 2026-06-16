@@ -9,8 +9,8 @@ echo "Installing required packages..."
 sudo apt install -y wget tar
 
 
-mkdir mynexus
-cd /mynexus
+
+cd /opt
 
 NEXUS_VERSION="3.93.0-06"
 
@@ -25,17 +25,17 @@ NEXUS_DIR=$(ls -d nexus-* | head -1)
 sudo mv $NEXUS_DIR nexus
 
 echo "Creating nexus user..."
-sudo useradd -r -m -d /mynexus/nexus -s /bin/bash nexus || true
+sudo useradd -r -m -d /opt/nexus -s /bin/bash nexus || true
 
 echo "Setting ownership..."
-sudo chown -R nexus:nexus /mynexus/nexus
+sudo chown -R nexus:nexus /opt/nexus
 
-if [ -d /mynexus/sonatype-work ]; then
-    sudo chown -R nexus:nexus /mynexus/sonatype-work
+if [ -d /opt/sonatype-work ]; then
+    sudo chown -R nexus:nexus /opt/sonatype-work
 fi
 
 echo "Configuring Nexus user..."
-sudo sed -i 's/#run_as_user=""/run_as_user="nexus"/' /mynexus/nexus/bin/nexus.rc
+sudo sed -i 's/#run_as_user=""/run_as_user="nexus"/' /opt/nexus/bin/nexus.rc
 
 echo "Creating systemd service..."
 
@@ -49,8 +49,8 @@ Type=forking
 LimitNOFILE=65536
 User=nexus
 Group=nexus
-ExecStart=/mynexus/nexus/bin/nexus start
-ExecStop=/mynexus/nexus/bin/nexus stop
+ExecStart=/opt/nexus/bin/nexus start
+ExecStop=/opt/nexus/bin/nexus stop
 Restart=on-abort
 
 [Install]
