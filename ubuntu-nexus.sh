@@ -10,8 +10,10 @@ sudo apt install -y wget tar
 
 cd /opt
 
+NEXUS_VERSION="3.93.0-06"
+
 echo "Downloading Nexus..."
-sudo wget https://download.sonatype.com/nexus/3/latest-unix.tar.gz
+sudo wget https://download.sonatype.com/nexus/3/nexus-${NEXUS_VERSION}-linux-x86_64.tar.gz
 
 echo "Extracting Nexus..."
 sudo tar -xzf latest-unix.tar.gz
