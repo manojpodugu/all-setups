@@ -34,8 +34,8 @@ if [ -d /opt/sonatype-work ]; then
     sudo chown -R nexus:nexus /opt/sonatype-work
 fi
 
-echo "Configuring Nexus user..."
-sudo sed -i 's/#run_as_user=""/run_as_user="nexus"/' /opt/nexus/bin/nexus.rc
+#echo "Configuring Nexus user..."
+#sudo sed -i 's/#run_as_user=""/run_as_user="nexus"/' /opt/nexus/bin/nexus.rc   # these two commands are used for older versions of nexus.
 
 echo "Creating systemd service..."
 
