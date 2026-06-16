@@ -27,13 +27,14 @@ mv apache-tomcat-${TOMCAT_VERSION} tomcat
 # ---------------------------
 # 1. Add users dynamically. You are: Adding role: manager-gui, Adding role: manager-script, Creating user: admin, Giving that user permissions
 # ---------------------------
-TOMCAT_USERS="tomcat/conf/tomcat-users.xml"
+TOMCAT_USERS="/opt/tomcat/conf/tomcat-users.xml"
 
 # Insert roles before closing tag
-sed -i '/<\/tomcat-users>/ i <role rolename="manager-gui"/>' $TOMCAT_USERS
-sed -i '/<\/tomcat-users>/ i <role rolename="manager-script"/>' $TOMCAT_USERS
-sed -i '/<\/tomcat-users>/ i <user username="admin" password="sai123" roles="manager-gui,manager-script"/>' $TOMCAT_USERS
-
+sed -i '/<\/tomcat-users>/ i \
+<role rolename="manager-gui"/>\n\
+<role rolename="manager-script"/>\n\
+<user username="admin" password="sai123" roles="manager-gui,manager-script"/>' \
+$TOMCAT_USERS
 # Remove restrictive Valve entry
 sed -i '/<Valve className="org.apache.catalina.valves.RemoteAddrValve"/,/\/>$/d' /opt/tomcat/webapps/manager/META-INF/context.xml
 
