@@ -1,20 +1,26 @@
 #!/bin/bash
 
-# Install Java 17
-sudo yum install java-17-amazon-corretto -y
+set -e
 
-# Download and extract Tomcat 9.0.99
-wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.105/bin/apache-tomcat-9.0.105.tar.gz
-tar -zxvf apache-tomcat-9.0.105.tar.gz
-mv apache-tomcat-9.0.105 tomcat
+apt update -y
+apt install openjdk-17-jdk wget -y
 
-# Add Tomcat manager roles and user before the closing </tomcat-users> tag
-sed -i '/<\/tomcat-users>/ i\
-<role rolename="manager-gui"/>\n<role rolename="manager-script"/>\n<user username="tomcat" password="raham123" roles="manager-gui, manager-script"/>
-' tomcat/conf/tomcat-users.xml
+TOMCAT_VERSION=10.1.26
 
-# Remove the restrictive Valve entry that limits access to manager web UI & removing this can allow to aceess the application with any IP address(publicly).
-sed -i '/<Valve className="org.apache.catalina.valves.RemoteAddrValve"/,/\/>$/d' tomcat/webapps/manager/META-INF/context.xml
+cd /opt
 
-# Start Tomcat
-sh tomcat/bin/startup.sh
+echo "Downloading Tomcat..."
+wget https://dlcdn.apache.org/tomcat/tomcat-10/v${TOMCAT_VERSION}/bin/apache-tomcat-${TOMCAT_VERSION}.tar.gz
+
+echo "Extracting..."
+tar -xvzf apache-tomcat-${TOMCAT_VERSION}.tar.gz
+
+mv apache-tomcat-${TOMCAT_VERSION} tomcat
+
+chmod +x /opt/tomcat/bin/*.sh
+
+echo "Starting Tomcat..."
+/opt/tomcat/bin/startup.sh
+
+echo "SUCCESS 🚀"
+echo "Open: http://<EC2-PUBLIC-IP>:8080"
