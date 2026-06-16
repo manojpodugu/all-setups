@@ -2,25 +2,26 @@
 
 set -e
 
-apt update -y
-apt install openjdk-17-jdk wget -y
+# Install Java
+sudo yum install java-17-amazon-corretto -y
 
-TOMCAT_VERSION=10.1.26
+# Download Tomcat
+wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.105/bin/apache-tomcat-9.0.105.tar.gz -P /root/
 
-cd /opt
+# Go to root directory
+cd /root/
 
-echo "Downloading Tomcat..."
-wget https://dlcdn.apache.org/tomcat/tomcat-10/v${TOMCAT_VERSION}/bin/apache-tomcat-${TOMCAT_VERSION}.tar.gz
+# Extract Tomcat
+tar -zxvf apache-tomcat-9.0.105.tar.gz
 
-echo "Extracting..."
-tar -xvzf apache-tomcat-${TOMCAT_VERSION}.tar.gz
+# Rename Tomcat directory
+mv apache-tomcat-9.0.105 tomcat
 
-mv apache-tomcat-${TOMCAT_VERSION} tomcat
+# Add tomcat users and roles
+sed -i '/<\/tomcat-users>/ i\ <role rolename="manager-gui"/>\n<role rolename="manager-script"/>\n<user username="tomcat" password="raham123" roles="manager-gui, manager-script"/>' /root/tomcat/conf/tomcat-users.xml
 
-chmod +x /opt/tomcat/bin/*.sh
+# Remove restrictive Valve entry
+sed -i '/<Valve className="org.apache.catalina.valves.RemoteAddrValve"/,/\/>$/d' /root/tomcat/webapps/manager/META-INF/context.xml
 
-echo "Starting Tomcat..."
-/opt/tomcat/bin/startup.sh
-
-echo "SUCCESS 🚀"
-echo "Open: http://<EC2-PUBLIC-IP>:8080"
+# Start Tomcat
+nohup /root/tomcat/bin/startup.sh &
