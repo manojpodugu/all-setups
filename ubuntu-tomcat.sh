@@ -1,6 +1,7 @@
 #!/bin/bash
 
 sudo apt update -y
+sudo -e
 sudo apt install openjdk-17-jdk -y
 
 cd /opt
