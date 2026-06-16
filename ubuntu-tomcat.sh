@@ -47,3 +47,5 @@ echo "Starting Tomcat..."
 
 echo "SUCCESS 🚀"
 echo "Open: http://<EC2-PUBLIC-IP>:8080"
+echo "vi /opt/tomcat/conf/tomcat-users.xml"
+echo "vi /opt/tomcat/webapps/manager/META-INF/context.xml"
