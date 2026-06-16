@@ -8,6 +8,8 @@ sudo apt update -y
 echo "Installing required packages..."
 sudo apt install -y wget tar
 
+
+mkdir mynexus
 cd /mynexus
 
 NEXUS_VERSION="3.93.0-06"
