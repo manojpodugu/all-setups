@@ -27,7 +27,7 @@ sed -i '/<\/tomcat-users>/ i <role rolename="manager-script"/>' $TOMCAT_USERS
 sed -i '/<\/tomcat-users>/ i <user username="admin" password="sai123" roles="manager-gui,manager-script"/>' $TOMCAT_USERS
 
 # Remove restrictive Valve entry
-sed -i '/<Valve className="org.apache.catalina.valves.RemoteAddrValve"/,/\/>$/d' /root/tomcat/webapps/manager/META-INF/context.xml
+sed -i '/<Valve className="org.apache.catalina.valves.RemoteAddrValve"/,/\/>$/d' /opt/tomcat/webapps/manager/META-INF/context.xml
 
 chmod +x /opt/tomcat/bin/*.sh
 
