@@ -51,6 +51,8 @@ cat /var/lib/jenkins/secrets/initialAdminPassword
 #NOTE: 
 # 1) ENABLE JAVA VERSION (optional if you want to pick between versions)
      #sudo update-alternatives --config java
-# 2) Use ubuntu 22.04 LTS      
+# 2) Use ubuntu 22.04 LTS 
+
+# 3) ls /var/lib/jenkins/workspace ---> path for searching artifact.
 
 
