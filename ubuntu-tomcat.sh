@@ -17,6 +17,14 @@ tar -xvzf apache-tomcat-${TOMCAT_VERSION}.tar.gz
 
 mv apache-tomcat-${TOMCAT_VERSION} tomcat
 # ---------------------------
+# FIX: Proper ownership & permissions (CRITICAL FIX)
+# ---------------------------
+echo "Setting permissions..."
+chown -R root:root /opt/tomcat
+chmod -R 755 /opt/tomcat
+chmod -R 755 /opt/tomcat/webapps
+
+# ---------------------------
 # 1. Add users dynamically. You are: Adding role: manager-gui, Adding role: manager-script, Creating user: admin, Giving that user permissions
 # ---------------------------
 TOMCAT_USERS="tomcat/conf/tomcat-users.xml"
