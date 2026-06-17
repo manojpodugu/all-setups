@@ -3,6 +3,7 @@
 set -e
 
 apt update -y
+apt upgrade -y
 apt install openjdk-17-jdk wget -y
 
 TOMCAT_VERSION=10.1.55
