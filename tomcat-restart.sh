@@ -1,6 +1,8 @@
 #!/bin/bash
+
+set -e
 # Stop Tomcat
-sh /opt/tomcat/bin/shutdown.sh
+sh /root/tomcat/bin/shutdown.sh
 
 echo "======================================================================"
 echo "===================== Wait 15s ======================================="
@@ -10,6 +12,6 @@ echo "======================================================================"
 sleep 10
 
 # Start Tomcat
-sh /opt/tomcat/bin/startup.sh
+sh /root/tomcat/bin/startup.sh
 
 echo "Tomcat Successfully Restarted"
