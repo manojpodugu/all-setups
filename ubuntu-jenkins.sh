@@ -45,6 +45,8 @@ sudo systemctl start jenkins
 # Confirms whether Jenkins started successfully
 sudo systemctl status jenkins --no-pager
 
+echo "vi /usr/lib/systemd/system/jenkins.service"
+echo "ABOVE PATH to change the port number of jenkins"
 # Displays Initial Password
 cat /var/lib/jenkins/secrets/initialAdminPassword
 
