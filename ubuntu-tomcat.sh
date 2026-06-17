@@ -39,7 +39,7 @@ $TOMCAT_USERS
 # Remove restrictive Valve entry
 echo "=============== Removing <Valve className="org.apache.catalina.valves.RemoteCIDRValve" allow="127.0.0.0/8,::1/128" /> ================================================ "
          
-sed -i '/<Valve className="org.apache.catalina.valves.RemoteAddrValve"/,/\/>$/d' /root/tomcat/webapps/manager/META-INF/context.xml
+sed -i '/<Valve className="org.apache.catalina.valves.RemoteAddrValve"/,/\/>/d' /root/tomcat/webapps/manager/META-INF/context.xml
 echo " updated /root/tomcat/webapps/manager/META-INF/context.xml"
 chmod +x /root/tomcat/bin/*.sh
 
