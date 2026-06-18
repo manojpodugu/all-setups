@@ -25,7 +25,7 @@
 
     - name: Remove restrictive Valve entry from context.xml
       command: >
-        sed -i '/<Valve className="org.apache.catalina.valves.RemoteAddrValve"/,/\/>$/d' /root/tomcat/webapps/manager/META-INF/context.xml
+        sed -i '/<Valve className="org.apache.catalina.valves.RemoteCIDRValve"/,/\/>$/d' /root/tomcat/webapps/manager/META-INF/context.xml
 
     - name: start the tomcat
       shell: sh /root/tomcat/bin/startup.sh
