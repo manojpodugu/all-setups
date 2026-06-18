@@ -1,7 +1,7 @@
 - hosts: all
   become: yes
   vars:
-    tomcat-version: "10.1.55"
+    tomcat_version: "10.1.55"
   tasks:
     - name: install java
       command: sudo yum install java-17-amazon-corretto -y
