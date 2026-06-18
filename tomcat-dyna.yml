@@ -1,20 +1,22 @@
 - hosts: all
   become: yes
+  vars:
+    tomcat-version: "10.1.55"
   tasks:
     - name: install java
       command: sudo yum install java-17-amazon-corretto -y
 
     - name: download tomcat from dlcdn
       get_url:
-        url: "https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.105/bin/apache-tomcat-9.0.105.tar.gz"
+        url: "https://dlcdn.apache.org/tomcat/tomcat-10/v{{ tomcat_version }}/bin/apache-tomcat-{{ tomcat_version }}.tar.gz"
         dest: "/root/"
 
     - name: untar the apache file
-      command: tar -zxvf apache-tomcat-9.0.105.tar.gz
+      command: tar -zxvf apache-tomcat-{{ tomcat_version }}.tar.gz
 
 
     - name: rename the tomcat
-      command: mv apache-tomcat-9.0.105 tomcat
+      command: mv apache-{{ tomcat_version }} tomcat
       tags: abc
 
     - name: Insert Tomcat manager roles and user before </tomcat-users>
@@ -26,4 +28,4 @@
         sed -i '/<Valve className="org.apache.catalina.valves.RemoteAddrValve"/,/\/>$/d' /root/tomcat/webapps/manager/META-INF/context.xml
 
     - name: start the tomcat
-      shell: nohup /root/tomcat/bin/startup.sh
+      shell: sh /root/tomcat/bin/startup.sh
