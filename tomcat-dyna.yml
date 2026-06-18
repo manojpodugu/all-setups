@@ -4,7 +4,7 @@
     tomcat_version: "10.1.55"
   tasks:
     - name: install java
-      command: sudo yum install java-17-amazon-corretto -y
+      command: sudo apt install openjdk-17-jdk wget -y
 
     - name: download tomcat from dlcdn
       get_url:
