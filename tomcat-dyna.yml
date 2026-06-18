@@ -16,7 +16,7 @@
 
 
     - name: rename the tomcat
-      command: mv apache-{{ tomcat_version }} tomcat
+      command: mv apache-tomcat-{{ tomcat_version }} tomcat
       tags: abc
 
     - name: Insert Tomcat manager roles and user before </tomcat-users>
