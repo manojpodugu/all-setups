@@ -3,7 +3,7 @@
 # Update Ubuntu package index from configured repositories
 echo "Updating system..."
 sudo apt update -y
-sudo apt updrage -y
+sudo apt upgrade -y
 
 echo "Installing prerequisites..."
 sudo apt install -y curl unzip tar
