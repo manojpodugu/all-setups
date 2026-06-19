@@ -1,7 +1,19 @@
 #!/bin/bash
 
 # Update Ubuntu package index from configured repositories
-sudo apt update
+echo "Updating system..."
+sudo apt update -y
+sudo apt updrage -y
+
+echo "Installing prerequisites..."
+sudo apt install -y curl unzip tar
+
+# Installing aws-cli, which will helpful while using s3 as a artifact backup
+echo "Installing AWS CLI v2..."
+curl -s "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip -q awscliv2.zip
+sudo ./aws/install
+
 
 # Install required packages:
 # curl  -> download files from URLs
@@ -44,6 +56,11 @@ sudo systemctl start jenkins
 # Display Jenkins service status
 # Confirms whether Jenkins started successfully
 sudo systemctl status jenkins --no-pager
+
+aws --version
+echo "=================================================================================="
+echo "========================== AWS-CLI Installed succesfully ========================="
+echo "==================================================================================="
 
 echo "vi /usr/lib/systemd/system/jenkins.service"
 echo "ABOVE PATH to change the port number of jenkins"
